@@ -1,5 +1,10 @@
+import Navbar from '../components/Navbar'
+
 export default function CurrentReads() {
   return (
-    <div>CurrentReads</div>
+    <div>
+        <Navbar />
+        CurrentReads
+    </div>
   )
 }

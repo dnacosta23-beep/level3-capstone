@@ -21,6 +21,19 @@ export default function Library() {
     }
   }
 
+  async function deleteBook(id) {
+  const { error } = await supabase
+    .from('books')
+    .delete()
+    .eq('id', id)
+
+  if (error) {
+    console.log(error)
+  } else {
+    fetchBooks()
+  }
+}
+
   return (
     <div>
       <Navbar />
