@@ -43,9 +43,11 @@ export default function Library() {
        {books.map((book) => (
         <BookCard
           key={book.id}
+          id={book.id}
           title={book.title}
           author={book.author}
           status={book.status}
+          deleteBook={deleteBook}
         />
       ))}
     </div>
