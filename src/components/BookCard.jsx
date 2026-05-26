@@ -1,5 +1,9 @@
-export default function BookCard() {
+export default function BookCard({ title, author, status }) {
   return (
-    <div>BookCard</div>
+  <div>
+      <h2>{title}</h2>
+      <p>{author}</p>
+      <p>{status}</p>
+    </div>
   )
 }
