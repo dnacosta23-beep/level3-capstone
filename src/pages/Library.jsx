@@ -5,6 +5,22 @@ import { supabase } from '../utils/supabase'
 export default function Library() {
 const [books, setBooks] = useState([])
 
+useEffect(() => {
+    fetchBooks()
+  }, [])
+
+  async function fetchBooks() {
+    const { data, error } = await supabase
+      .from('books')
+      .select('*')
+
+    if (error) {
+      console.log(error)
+    } else {
+      setBooks(data)
+    }
+  }
+  
   return (
         <div>
       <Navbar />
