@@ -5,6 +5,26 @@ export default function BookForm() {
 const [title, setTitle] = useState('')
 const [author, setAuthor] = useState('')
 
+async function addBook(e) {
+    e.preventDefault()
+
+    const { error } = await supabase
+      .from('books')
+      .insert([
+        {
+          title: title,
+          author: author,
+          status: 'To Read'
+        }
+      ])
+
+    if (error) {
+      console.log(error)
+    } else {
+      setTitle('')
+      setAuthor('')
+    }
+  }
 
   return (
        <form onSubmit={addBook}>
