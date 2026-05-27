@@ -1,3 +1,6 @@
+import Navbar from '../components/Navbar'
+import Sidebar from '../components/Sidebar'
+
 import { useState } from 'react'
 import { supabase } from '../utils/supabase'
 
@@ -38,6 +41,8 @@ async function handleSignup() {
 
   return (
     <div>
+        <Navbar />
+        <Sidebar />
 
   <h1>Login</h1>
 

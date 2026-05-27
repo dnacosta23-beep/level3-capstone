@@ -7,6 +7,7 @@ export default function Navbar() {
 
       <div>
         <Link to='/'>Home</Link>
+        <Link to='/login'>Login</Link>
         <Link to='/library'>My Library</Link>
         <Link to='/current-reads'>Current Reads</Link>
         <Link to='/to-read'>To Read</Link>

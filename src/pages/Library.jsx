@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
+import Sidebar from '../components/Sidebar'
+import BookCard from '../components/BookCard'
+
+import { useEffect, useState } from 'react'
 import { supabase } from '../utils/supabase'
 
 export default function Library() {
@@ -39,6 +42,7 @@ async function updateProgress(id, page) {
   return (
     <div>
       <Navbar />
+      <Sidebar />
 
       <h1>My Library</h1>
 
