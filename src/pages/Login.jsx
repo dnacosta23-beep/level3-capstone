@@ -21,6 +21,21 @@ async function handleLogin(e) {
   }
 }
 
+async function handleSignup() {
+
+  const { error } =
+    await supabase.auth.signUp({
+      email,
+      password
+    })
+
+  if (error) {
+    console.log(error)
+  } else {
+    console.log('Account Created')
+  }
+}
+
   return (
     <div>
 
@@ -43,7 +58,11 @@ async function handleLogin(e) {
     />
 
     <button type='submit'>
-      Login
+    Login
+    </button>
+
+    <button type='button' onClick={handleSignup}>
+    Create Account
     </button>
 
   </form>
