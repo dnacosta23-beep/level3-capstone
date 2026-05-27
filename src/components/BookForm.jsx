@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { supabase } from '../utils/supabase'
 
-export default function BookForm() {
+export default function BookForm({fetchBooks}) {
 const [title, setTitle] = useState('')
 const [author, setAuthor] = useState('')
 
@@ -10,7 +10,7 @@ async function addBook(e) {
   e.preventDefault()
 
   const {data: { user }} = await supabase.auth.getUser()
-  
+
   const { error } = await supabase.from('books').insert([
       {
         title: title,
@@ -25,6 +25,7 @@ async function addBook(e) {
   } else {
     setTitle('')
     setAuthor('')
+    fetchBooks()
   }
 }
 
