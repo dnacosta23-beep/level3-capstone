@@ -10,22 +10,19 @@ export default function Library() {
   }, [])
 
   async function fetchBooks() {
-    const { data, error } = await supabase.from('books').select('*')
+  const {data: { user },error: userError} = await supabase.auth.getUser()
 
-    if (error) {
-      console.log(error)
-    } else {
-      setBooks(data)
-    }
+  if (userError) {
+    console.log(userError)
+    return
   }
 
-  async function deleteBook(id) {
-  const { error } = await supabase.from('books').delete().eq('id', id)
+  const { data, error } = await supabase.from('books').select('*').eq('user_id', user.id)
 
   if (error) {
     console.log(error)
   } else {
-    fetchBooks()
+    setBooks(data)
   }
 }
 
@@ -52,8 +49,8 @@ async function updateProgress(id, page) {
           title={book.title}
           author={book.author}
           status={book.status}
-          deleteBook={deleteBook}
           current_page={book.current_page}
+          deleteBook={deleteBook}
           updateProgress={updateProgress}
         />
       ))}
