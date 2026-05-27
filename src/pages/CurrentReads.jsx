@@ -7,6 +7,7 @@ import { supabase } from '../utils/supabase'
 
 export default function CurrentReads() {
  const [books, setBooks] = useState([])
+ const [search, setSearch] = useState('')
 
   useEffect(() => {
     fetchBooks()
@@ -44,12 +45,16 @@ export default function CurrentReads() {
     }
   }
 
+  const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase()))
+
   return (
     <div>
         <Sidebar />
         <h1>Current Reads</h1>
 
-        {books.map((book) => (
+        <SearchBar search={search} setSearch={setSearch} />
+
+        {filteredBooks.map((book) => (
             <BookCard
               key={book.id}
               id={book.id}

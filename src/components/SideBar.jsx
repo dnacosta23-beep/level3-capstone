@@ -7,21 +7,15 @@ export default function SideBar() {
 
       <nav>
 
-        <Link to='/'>
-          Home
-        </Link>
+        <Link to='/'> Home </Link>
 
-        <Link to='/library'>
-          My Library
-        </Link>
+        <Link to='/login'> Login </Link>
 
-        <Link to='/current-reads'>
-          Current Reads
-        </Link>
+        <Link to='/library'> My Library </Link>
 
-        <Link to='/to-read'>
-          To Read
-        </Link>
+        <Link to='/current-reads'> Current Reads </Link>
+
+        <Link to='/to-read'> To Read </Link>
 
       </nav>
     </div>
