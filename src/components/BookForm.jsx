@@ -6,25 +6,27 @@ const [title, setTitle] = useState('')
 const [author, setAuthor] = useState('')
 
 async function addBook(e) {
-    e.preventDefault()
 
-    const { error } = await supabase
-      .from('books')
-      .insert([
-        {
-          title: title,
-          author: author,
-          status: 'To Read'
-        }
-      ])
+  e.preventDefault()
 
-    if (error) {
-      console.log(error)
-    } else {
-      setTitle('')
-      setAuthor('')
-    }
+  const {data: { user }} = await supabase.auth.getUser()
+  
+  const { error } = await supabase.from('books').insert([
+      {
+        title: title,
+        author: author,
+        status: 'To Read',
+        user_id: user.id
+      }
+    ])
+
+  if (error) {
+    console.log(error)
+  } else {
+    setTitle('')
+    setAuthor('')
   }
+}
 
   return (
        <form onSubmit={addBook}>
