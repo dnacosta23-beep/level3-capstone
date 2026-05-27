@@ -1,4 +1,4 @@
-import Navbar from '../components/Navbar'
+
 import Sidebar from '../components/Sidebar'
 import BookCard from '../components/BookCard'
 
@@ -41,7 +41,7 @@ async function updateProgress(id, page) {
 
   return (
     <div>
-      <Navbar />
+    
       <Sidebar />
 
       <h1>My Library</h1>
