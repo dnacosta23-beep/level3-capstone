@@ -34,6 +34,21 @@ export default function Library() {
   }
 }
 
+async function updateProgress(id, page) {
+  const { error } = await supabase
+    .from('books')
+    .update({
+      current_page: page
+    })
+    .eq('id', id)
+
+  if (error) {
+    console.log(error)
+  } else {
+    fetchBooks()
+  }
+}
+
   return (
     <div>
       <Navbar />
