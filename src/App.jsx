@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 
 import Home from './pages/Home'
+import Login from './pages/Login'
 import Library from './pages/Library'
 import CurrentReads from './pages/CurrentReads'
 import ToRead from './pages/ToRead'
@@ -14,6 +15,7 @@ function App() {
    <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />}/>
         <Route path='/library' element={<Library />} />
         <Route path='/current-reads' element={<CurrentReads />} />
         <Route path='/to-read' element={<ToRead />} />  
