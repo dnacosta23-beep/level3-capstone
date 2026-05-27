@@ -5,12 +5,28 @@ export default function Login() {
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 
+async function handleLogin(e) {
+
+  e.preventDefault()
+
+  const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    })
+
+  if (error) {
+    console.log(error)
+  } else {
+    console.log('Logged In')
+  }
+}
+
   return (
     <div>
 
   <h1>Login</h1>
 
-  <form>
+  <form onSubmit={handleLogin}>
 
     <input
       type='email'
