@@ -1,12 +1,14 @@
 
 import Sidebar from '../components/Sidebar'
 import BookCard from '../components/BookCard'
+import SearchBar from '../components/SearchBar'
 
 import { useEffect, useState } from 'react'
 import { supabase } from '../utils/supabase'
 
 export default function Library() {
   const [books, setBooks] = useState([])
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     fetchBooks()
@@ -39,6 +41,8 @@ async function updateProgress(id, page) {
   }
 }
 
+ const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase()))
+
   return (
     <div>
     
@@ -46,7 +50,10 @@ async function updateProgress(id, page) {
 
       <h1>My Library</h1>
 
-       {books.map((book) => (
+        <SearchBar search={search} setSearch={setSearch} />
+
+       {filteredBooks.map((book) => (
+
         <BookCard
           key={book.id}
           id={book.id}
@@ -58,6 +65,7 @@ async function updateProgress(id, page) {
           updateProgress={updateProgress}
         />
       ))}
+      
     </div>
   )
 }

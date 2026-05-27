@@ -1,5 +1,18 @@
-export default function SearchBar() {
+
+
+export default function SearchBar({ search, setSearch }) {
+
+
   return (
-    <div>SearchBar</div>
+        
+       <input
+      type='text'
+      placeholder='Search books...'
+      value={search}
+      onChange={(e) =>
+        setSearch(e.target.value)
+      }
+    />
+
   )
 }
