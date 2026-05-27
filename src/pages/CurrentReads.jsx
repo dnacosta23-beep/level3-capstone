@@ -1,6 +1,7 @@
 
 import Sidebar from '../components/Sidebar'
 import BookCard from '../components/BookCard'
+import SearchBar from '../components/SearchBar'
 
 import { useEffect, useState } from 'react'
 import { supabase } from '../utils/supabase'
