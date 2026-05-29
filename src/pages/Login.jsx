@@ -1,77 +1,113 @@
-
-import Sidebar from '../components/Sidebar'
-
 import { useState } from 'react'
 import { supabase } from '../utils/supabase'
 
 export default function Login() {
-const [email, setEmail] = useState('')
-const [password, setPassword] = useState('')
 
-async function handleLogin(e) {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] =
+    useState('')
 
-  e.preventDefault()
+  async function handleLogin(e) {
 
-  const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    })
+    e.preventDefault()
 
-  if (error) {
-    console.log(error)
-  } else {
-    console.log('Logged In')
-  }
+    // Attempts login using Supabase authentication
+    const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      })
+
+   if (error) {
+  console.log(error)
+} else {
+  // Redirects user to home page after login
+  window.location.href = '/'
 }
-
-async function handleSignup() {
-
-  const { error } =
-    await supabase.auth.signUp({
-      email,
-      password
-    })
-
-  if (error) {
-    console.log(error)
-  } else {
-    console.log('Account Created')
   }
-}
+
+   // Creates a new account
+  async function handleSignup() {
+
+    // Sends email/password to Supabase auth
+    const { error } =
+      await supabase.auth.signUp({
+        email,
+        password
+      })
+
+    if (error) {
+      console.log(error)
+      alert(error.message)
+
+    } else {
+      alert('Account Created')
+    }
+  }
 
   return (
-    <div>
-   
-        <Sidebar />
 
-  <h1>Login</h1>
+    // Full login page container
+    <div className='login-page'>
 
-  <form onSubmit={handleLogin}>
+     {/* Login card box */}
+      <div className='login-card'>
 
-    <input
-      type='email'
-      placeholder='Email'
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-    />
+        <h1 className='login-title'>
+          Practical Bookshelf
+        </h1>
 
-    <input
-      type='password'
-      placeholder='Password'
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-    />
+        <p className='login-subtitle'>
+          Track your personal library and reading progress.
+        </p>
 
-    <button type='submit'>
-    Login
-    </button>
+        {/* Login form */}
+        <form
+          className='login-form'
+          onSubmit={handleLogin}
+        >
 
-    <button type='button' onClick={handleSignup}>
-    Create Account
-    </button>
+        {/* Email and password inputs */}
+          <input
+            className='form-input'
+            type='email'
+            placeholder='Email'
+            value={email}
+            onChange={(e) =>
+              setEmail(e.target.value)
+            }
+          />
 
-  </form>
+          <input
+            className='form-input'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
+          />
 
-</div>
+        {/* Login button */}
+          <button
+            className='primary-btn'
+            type='submit'
+          >
+            Login
+          </button>
+
+         {/* Signup button */}
+          <button
+            className='secondary-btn'
+            type='button'
+            onClick={handleSignup}
+          >
+            Create Account
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
   )
 }

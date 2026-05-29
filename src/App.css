@@ -1,0 +1,587 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4efe9;
+  color: #2f2a35;
+}
+
+/* APP LAYOUT */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR*/
+
+.sidebar {
+  width: 250px;
+  background-color: #315c55;
+  color: white;
+  padding: 24px;
+  box-sizing: border-box;
+  /* Vertical sidebar layout */
+  display: flex;
+  flex-direction: column;
+  /* Smooth collapse animation */
+  transition: width 0.3s ease;
+}
+
+/* Smaller collapsed sidebar */
+
+.sidebar.collapsed {
+  width: 80px;
+  align-items: center;
+}
+
+
+/* Collapse menu button */
+
+.collapse-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  margin-bottom: 24px;
+  align-self: flex-start;
+}
+
+
+/* Center collapse icon when collapsed */
+
+.sidebar.collapsed .collapse-btn {
+  align-self: center;
+}
+
+
+/* App title */
+
+.sidebar-title {
+  font-size: 24px;
+
+  margin-bottom: 40px;
+}
+
+
+/* Navigation layout */
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+/* Sidebar links */
+
+.sidebar-link {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  /* Smooth hover movement */
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* Hover effect */
+
+.sidebar-link:hover {
+  background-color: #7a4e68;
+  /* Slight movement */
+  transform: translateX(4px);
+}
+
+
+/* Current active page */
+
+.active-link {
+  background-color: #d8c3a5;
+  color: #2f2a35;
+  font-weight: bold;
+}
+
+
+/* Bottom user area */
+
+.sidebar-user {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.25);
+}
+
+
+/* Logged in email */
+
+.user-email {
+  font-size: 13px;
+  word-break: break-word;
+  margin-bottom: 12px;
+}
+
+/* Logout button */
+
+.logout-btn {
+  width: 100%;
+  background-color: #9f4f5f;
+  color: white;
+  border: none;
+  padding: 11px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.logout-btn:hover {
+  background-color: #7f3e4c;
+  transform: scale(1.03);
+}
+
+
+/* MAIN CONTENT */
+
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+}
+
+/* Welcome banner */
+
+.welcome-section {
+  background-color: white;
+  padding: 28px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(47, 42, 53, 0.08);
+}
+
+/* Page title sections */
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+/* General page spacing */
+
+.page-section {
+  margin-top: 40px;
+}
+
+
+/* STATS GRID */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 30px 0;
+}
+
+
+/* Individual stat cards */
+
+.stat-card {
+  background-color: white;
+  border-left: 6px solid #7a4e68;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(47, 42, 53, 0.08);
+}
+
+
+.stat-card p {
+  font-size: 28px;
+  font-weight: bold;
+  color: #315c55;
+}
+
+/* Styles uploaded book cover images */
+
+.book-cover {
+  width: 100%;
+  height: 230px;
+  background-color: #8a9a5b;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  object-fit: cover;
+}
+
+
+/* TOOLBAR / SEARCH */
+
+.toolbar {
+  margin-bottom: 20px;
+}
+
+
+/* Search container */
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+  max-width: 400px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Search hover */
+
+.search-bar-container:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+
+/* Search icon */
+
+.search-icon {
+  color: #7a4e68;
+  font-size: 18px;
+}
+
+
+/* Search input */
+
+.search-bar {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  background-color: transparent;
+}
+
+
+/* FORMS */
+
+.book-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+ 
+/* Shared form styling */
+
+.form-input,
+.page-input {
+  padding: 12px;
+  border: 1px solid #c9b8a8;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+
+/* BOOK GRID */
+
+.library-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+
+/* BOOK CARDS */
+
+.book-card {
+  background-color: white;
+  width: 220px;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(47, 42, 53, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* Hover lift effect */
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(47, 42, 53, 0.12);
+}
+
+/* Fake placeholder cover */
+
+.book-cover {
+  height: 230px;
+  background-color: #8a9a5b;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+/* Book title */
+
+.book-info h2 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+/* Book text */
+
+.book-info p {
+  margin: 0 0 10px;
+  color: #6b6070;
+}
+
+/* Date added */
+
+.created-date {
+  font-size: 13px;
+  color: #8b7d8f;
+  margin-top: 4px;
+}
+
+
+/* Reading status badge */
+.status-badge {
+  display: inline-block;
+  background-color: #d8c3a5;
+  color: #2f2a35;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+
+/* PROGRESS BAR */
+
+.progress-text {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #6b6070;
+}
+
+/* Empty bar */
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #d8c3a5;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+
+/* Filled progress */
+
+.progress-fill {
+  height: 100%;
+  background-color: #315c55;
+  transition: width 0.3s ease;
+}
+
+
+/* PROGRESS INPUT AREA */
+
+.progress-area {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+/* BUTTONS */
+
+.primary-btn {
+  background-color: #7a4e68;
+  color: white;
+  border: none;
+  padding: 11px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.primary-btn:hover {
+  background-color: #5d3c50;
+  transform: scale(1.03);
+}
+
+
+.delete-btn {
+  margin-top: 10px;
+  background-color: #9f4f5f;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.delete-btn:hover {
+  background-color: #7f3e4c;
+  transform: scale(1.03);
+}
+
+
+/* LOGIN PAGE */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4efe9;
+}
+
+
+/* Login card */
+
+.login-card {
+  background-color: white;
+  width: 400px;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+
+.login-title {
+  margin-top: 0;
+  color: #315c55;
+  font-size: 32px;
+}
+
+
+.login-subtitle {
+  color: #6b6070;
+  margin-bottom: 30px;
+}
+
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+/* Secondary login button */
+
+.secondary-btn {
+  background-color: #d8c3a5;
+  color: #2f2a35;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+.secondary-btn:hover {
+  background-color: #cbb08d;
+}
+
+
+/* FOOTER */
+
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  color: #6b6070;
+  font-size: 14px;
+}
+
+
+/* NOT FOUND PAGE */
+
+.not-found-page {
+  padding: 40px;
+  text-align: center;
+}
+
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+
+  /* Collapse sidebar automatically on smaller screens */
+  .sidebar {
+    width: 80px;
+    padding: 16px;
+    align-items: center;
+  }
+
+  /* Hide sidebar title on mobile */
+  .sidebar-title {
+    display: none;
+  }
+
+  /* Center navigation icons */
+  .sidebar-nav {
+    align-items: center;
+  }
+
+  /* Make links icon-only on mobile */
+  .sidebar-link span {
+    display: none;
+  }
+
+  /* Reduce spacing inside links */
+  .sidebar-link {
+    justify-content: center;
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  /* Keep logout button compact */
+  .logout-btn span {
+    display: none;
+  }
+
+  /* Center logout icon */
+  .logout-btn {
+    justify-content: center;
+  }
+
+  /* Hide email text on mobile */
+  .user-email {
+    display: none;
+  }
+
+  /* Reduce main content padding on smaller screens */
+  .main-content {
+    padding: 20px;
+  }
+
+  /* Stack stats cards vertically */
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Center book cards */
+  .library-grid {
+    justify-content: center;
+  }
+}
